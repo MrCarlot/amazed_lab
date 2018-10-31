@@ -1,0 +1,7 @@
+We used the depth-first sequential search as a base for our implementation. 
+We have a "goalFound" AtomicBoolean that has to be false for players to keep searching.
+When the goal has not been found and there are more than 3 "neighbours", we create a child through fork()
+for each neighbour that has not been visited. Children will be given a new "start". The player that creates 
+children through fork() will wait for join() at the position it forked. 
+When the goal has been found the child who found it will run pathFromTo to create a "path"(list) from where it started
+to the goal. The parent will then concatenate that list with the path it has taken, recursively creating the full path.
